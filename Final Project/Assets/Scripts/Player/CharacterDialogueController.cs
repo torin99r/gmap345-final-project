@@ -5,12 +5,14 @@ using UnityEngine;
 public class CharacterDialogueController : MonoBehaviour, Interactables
 {
     [SerializeField] Dialog dialog;
+    [SerializeField] DayNightCycle cycle;
     Character character;
     CharacterState state;
     
     private void Awake()
     {
         character = GetComponent<Character>();
+        cycle = GameObject.FindGameObjectWithTag("TimeCycleEvent").GetComponent<DayNightCycle>();
     }
     public void Interact(Transform init)
     {
@@ -20,6 +22,10 @@ public class CharacterDialogueController : MonoBehaviour, Interactables
             character.LookTowards(init.position);
             StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () => {
                 state = CharacterState.Idle;
+                if (gameObject.tag == "ActivateEvent")
+                {
+                    cycle.triggered = true;
+                }
             }));
         }
     }
