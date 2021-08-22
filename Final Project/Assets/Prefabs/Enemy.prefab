@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4687111328686288567}
   - component: {fileID: 4687111328686288566}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,8 @@ MonoBehaviour:
   enemyMaxHealth: 100
   enemyCurrentHealth: 100
   isEnemyTurn: 0
-  playerController: {fileID: 0}
+  isAlive: 1
+  numEnemy: 0
 --- !u!1 &4687111328732486749
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +59,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4687111328732486748}
   - component: {fileID: 4687111328732486751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +120,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: be39aa8d6eaffe0498e543448cddb664, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.8301887, g: 0.08223567, b: 0.08223567, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8223233068097875888}
   - component: {fileID: 8223233068097875895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: be39aa8d6eaffe0498e543448cddb664, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0, g: 0.29676205, b: 0.764151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8223233068543446643}
   - component: {fileID: -2122461104894077955}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PartyMember
   m_TagString: PartyMember1
   m_Icon: {fileID: 0}
@@ -127,6 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   memberMaxHealth: 100
-  memberCurrentHealth: 100
   memberMaxMana: 100
-  memberCurrentMana: 100
+  memberCurrentHealth: 100
