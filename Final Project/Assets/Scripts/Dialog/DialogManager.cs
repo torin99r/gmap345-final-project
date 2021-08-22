@@ -6,22 +6,29 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
-    [SerializeField] GameObject dialogBox;
+    [SerializeField] GameObject dialogBox, choiceBox, dialogChoices;
     [SerializeField] Text dialogText;
     [SerializeField] int lettersPerSecond;
+    [SerializeField] Button[] choiceButton;
+    [SerializeField] ChooseInput[] input;
+    DialogChoices choices;
+    
 
     public event Action OnShowDialog;
     public event Action OnCloseDialog;
-    public static DialogManager Instance { get; private set; }
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     int currentLine = 0;
     Dialog dialog;
     Action onDialogFinished;
     bool isTalking;
+
+    public static DialogManager Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = this;
+        choices = dialogChoices.GetComponent<DialogChoices>();
+
+    }
 
     public bool IsShowing { get; private set; }
 
@@ -51,9 +58,22 @@ public class DialogManager : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && !isTalking)
+        if (Input.GetKeyDown(KeyCode.Space) && !isTalking)
         {
             ++currentLine;
+
+            if(currentLine == dialog.LineNum)
+            {
+                choiceBox.SetActive(true);
+                dialog.Lines.Insert(currentLine, "...");
+                var getChoices = choices.getLines();
+                for(int x = 0; x < getChoices.Count; x++)
+                {
+                    choiceButton[x].GetComponentInChildren<Text>().text = getChoices[x];
+                    input[x] = choiceButton[x].GetComponent<ChooseInput>();   
+                }
+            }
+
             if(currentLine < dialog.Lines.Count)
             {
                 StartCoroutine(TypeDialog(dialog.Lines[currentLine]));
@@ -65,7 +85,25 @@ public class DialogManager : MonoBehaviour
                 dialogBox.SetActive(false);
                 onDialogFinished?.Invoke();
                 OnCloseDialog?.Invoke();
+                dialog.Lines.Clear();
+                dialog.Lines.AddRange(choices.defaultLines());
+            }
+        }
+        GetPlayerChoice();
+    }
+
+    public void GetPlayerChoice()
+    {
+        for (int x = 0; x < choices.getLines().Count; x++)
+        {
+            if (input[x].clicked)
+            {
+                Debug.Log(input[x].tag);
+                input[x].clicked = false;
+                choiceBox.SetActive(false);
+                dialog.Lines.AddRange(choices.getA());
             }
         }
     }
+    //TODO: Make a state enum --> If player is choosing their inputs (Choosing State) --> Dialog State
 }
