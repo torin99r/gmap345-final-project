@@ -18,6 +18,7 @@ TagManager:
   - A
   - B
   - C
+  - Enemy
   layers:
   - Default
   - TransparentFX

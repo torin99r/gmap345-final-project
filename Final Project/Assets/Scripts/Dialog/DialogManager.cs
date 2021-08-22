@@ -70,7 +70,7 @@ public class DialogManager : MonoBehaviour
                 for(int x = 0; x < getChoices.Count; x++)
                 {
                     choiceButton[x].GetComponentInChildren<Text>().text = getChoices[x];
-                    input[x] = choiceButton[x].GetComponent<ChooseInput>();   
+                    input[x] = choiceButton[x].GetComponent<ChooseInput>();
                 }
             }
 
@@ -96,12 +96,23 @@ public class DialogManager : MonoBehaviour
     {
         for (int x = 0; x < choices.getLines().Count; x++)
         {
-            if (input[x].clicked)
+            if (input[x].clicked && input[x].tag == "A")
             {
-                Debug.Log(input[x].tag);
                 input[x].clicked = false;
                 choiceBox.SetActive(false);
                 dialog.Lines.AddRange(choices.getA());
+            }
+            else if (input[x].clicked && input[x].tag == "B")
+            {
+                input[x].clicked = false;
+                choiceBox.SetActive(false);
+                dialog.Lines.AddRange(choices.getB());
+            }
+            else if (input[x].clicked && input[x].tag == "C")
+            {
+                input[x].clicked = false;
+                choiceBox.SetActive(false);
+                dialog.Lines.AddRange(choices.getC());
             }
         }
     }

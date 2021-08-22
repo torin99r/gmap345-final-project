@@ -51,8 +51,8 @@ public class EnemyController : MonoBehaviour
     public void EnemyTakeDamage(int damage)
     {
         enemyCurrentHealth -= damage;
-        Debug.Log(enemyCurrentHealth);
-        Debug.Log(numEnemy);
+        //Debug.Log(enemyCurrentHealth);
+        //Debug.Log(numEnemy);
     }
 
     public void EnemyAttack()

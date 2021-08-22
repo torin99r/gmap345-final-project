@@ -13,6 +13,7 @@ public class PartyController : MonoBehaviour
     public GameObject playerStats;
     public GameObject partyMember;
     public EnemyPartyController enemyPartyController;
+    public bool battleOver = false;
 
     //script for each party member
     //public PlayerBattleController playerBattleController;
@@ -58,6 +59,7 @@ public class PartyController : MonoBehaviour
         if (enemyPartyController.enemiesAlive <= 0)
         {
             Debug.Log("You Win");
+            battleOver = true;
         }
 
         if (movesLeft <= 0)

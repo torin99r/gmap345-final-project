@@ -3,10 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { Free, Dialog }
+public enum GameState { Free, Dialog, Battle }
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
+    [SerializeField] PartyController partyController;
+    [SerializeField] GameObject battleSystem;
+    [SerializeField] Camera mainCamera;
+    [SerializeField] GameObject enemy;
+    public string tagName;
     GameState state;
 
     public static GameController Instance { get; private set; }
@@ -28,7 +33,15 @@ public class GameController : MonoBehaviour
         {
             if(state == GameState.Dialog)
             {
-                state = GameState.Free;
+                if (tagName.Contains("Enemy"))
+                {
+                    state = GameState.Battle;
+                }
+                else
+                {
+                    state = GameState.Free;
+                }
+                
             }
         };
     }
@@ -43,6 +56,21 @@ public class GameController : MonoBehaviour
         else if(state == GameState.Dialog)
         {
             DialogManager.Instance.HandleUpdate();
+        }
+        else if(state == GameState.Battle)
+        {
+            battleSystem.SetActive(true);
+            mainCamera.gameObject.SetActive(false);
+            if (partyController.battleOver)
+            {
+                battleSystem.SetActive(false);
+                mainCamera.gameObject.SetActive(true);
+                state = GameState.Free;
+                partyController.battleOver = false;
+                enemy = GameObject.Find(tagName).gameObject;
+                enemy.SetActive(false);
+            }
+            
         }
     }
 }
