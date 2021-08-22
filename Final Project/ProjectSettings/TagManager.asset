@@ -12,6 +12,12 @@ TagManager:
   - EnemyParty
   - SelectButtons
   - BattleButtons
+  - ActivateEvent
+  - DeactivateEvent
+  - TimeCycleEvent
+  - A
+  - B
+  - C
   layers:
   - Default
   - TransparentFX
@@ -19,10 +25,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - BattleSystem
+  - Characters
+  - SolidObjects
+  - Triggerables
   - 
   - 
   - 
