@@ -58,3 +58,15 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Project/Library/ArtifactDB
+Project/Library/PackageManager/ProjectCache
+Project/Library/PackageManager/ProjectCache.md5
+Project/Library/SceneVisibilityState.asset
+Project/Library/ScriptAssemblies/BuiltinAssemblies.stamp
+Project/Library/ShaderCache/EditorEncounteredVariants
+Project/Library/SourceAssetDB
+Project/Library/Style.catalog
+Project/Logs/shadercompiler-UnityShaderCompiler.exe0.log
+Project/ProjectSettings/EditorBuildSettings.asset
+Project/ProjectSettings/TagManager.asset
+Project/UserSettings/EditorUserSettings.asset
