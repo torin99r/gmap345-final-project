@@ -7,6 +7,8 @@ public class Dialog
 {
     [SerializeField] List<string> lines;
     [SerializeField] int lineNum;
+    [SerializeField] string hireChoice;
+    [SerializeField] string characterName;
 
     public List<string> Lines
     {
@@ -21,6 +23,22 @@ public class Dialog
         get
         {
             return lineNum;
+        }
+    }
+
+    public string HireChoice
+    {
+        get
+        {
+            return hireChoice;
+        }
+    }
+
+    public string CharacterName
+    {
+        get
+        {
+            return characterName;
         }
     }
 }

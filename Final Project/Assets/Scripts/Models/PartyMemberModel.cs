@@ -107,7 +107,8 @@ public class PartyMemberModel
 
     public void setProfileImage(Sprite profileImage)
     {
-        this.profileImage = profileImage; 
+        this.profileImage = profileImage;
     }
+
 
 }

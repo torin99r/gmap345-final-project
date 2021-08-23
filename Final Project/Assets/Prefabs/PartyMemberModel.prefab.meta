@@ -1,7 +1,12 @@
 fileFormatVersion: 2
-guid: 4547a085e92be4258b99830e3e27a248
+<<<<<<< HEAD:Final Project/Assets/Scenes/PartyScreenScene.unity.meta
+guid: 1685491f3b2e342afaf9dce8a3b98893
+DefaultImporter:
+=======
+guid: 9af4f2f261587ab4f99ed44e8a446a78
 PrefabImporter:
+>>>>>>> origin/final_project_v0.2
   externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:
