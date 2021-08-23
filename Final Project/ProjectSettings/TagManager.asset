@@ -26,10 +26,17 @@ TagManager:
   - 
   - Water
   - UI
+<<<<<<< HEAD
   - BattleSystem
   - Characters
   - SolidObjects
   - Triggerables
+=======
+  - Text
+  - Background
+  - 
+  - 
+>>>>>>> tr/party-implementation
   - 
   - 
   - 
