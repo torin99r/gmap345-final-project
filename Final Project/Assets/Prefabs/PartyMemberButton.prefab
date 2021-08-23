@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -212,6 +212,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966b188eafdab4f1ba0f7d584a062c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelected: 0
+  id: {fileID: 0}
+  name: {fileID: 2196047519895184425}
+  hp: {fileID: 2609273153741769791}
+  mana: {fileID: 1880159978416711507}
+  profile: {fileID: 5289237043357961581}
 --- !u!1 &5467213673261048651
 GameObject:
   m_ObjectHideFlags: 0

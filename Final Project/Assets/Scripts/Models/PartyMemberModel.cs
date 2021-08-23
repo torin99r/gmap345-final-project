@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PartyMemberModel : MonoBehaviour
+public class PartyMemberModel
 {
+    string name = "";
     bool inParty = false;
     int hp = 100;
     int mana = 100;
@@ -11,17 +13,21 @@ public class PartyMemberModel : MonoBehaviour
     int def = 0;
     int agl = 0;
     int spd = 0;
+    Sprite profileImage;
 
-    // Start is called before the first frame update
-    void Start()
+    public PartyMemberModel()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public string getName()
     {
-        
+        return name;
+    }
+
+    public void setName(string name)
+    {
+        this.name = name;
     }
 
     public bool getInParty()
@@ -92,6 +98,16 @@ public class PartyMemberModel : MonoBehaviour
     public void setSPD(int spd)
     {
         this.spd = spd;
+    }
+
+    public Sprite getProfileImage()
+    {
+        return profileImage;
+    }
+
+    public void setProfileImage(Sprite profileImage)
+    {
+        this.profileImage = profileImage; 
     }
 
 }
