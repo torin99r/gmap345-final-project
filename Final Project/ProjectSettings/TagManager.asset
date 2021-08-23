@@ -3,22 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - PartyMember1
-  - Party
-  - Stats1
-  - HealthBar
-  - ManaBar
-  - EnemyParty
-  - SelectButtons
-  - BattleButtons
-  - ActivateEvent
-  - DeactivateEvent
-  - TimeCycleEvent
-  - A
-  - B
-  - C
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -26,17 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< HEAD
-  - BattleSystem
-  - Characters
-  - SolidObjects
-  - Triggerables
-=======
-  - Text
-  - Background
   - 
   - 
->>>>>>> tr/party-implementation
+  - 
+  - 
   - 
   - 
   - 
