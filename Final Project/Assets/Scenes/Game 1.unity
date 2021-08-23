@@ -2007,7 +2007,8 @@ MonoBehaviour:
   partyController: {fileID: 1206538288}
   battleSystem: {fileID: 770713283}
   mainCamera: {fileID: 1701193986}
-  dialogController: {fileID: 1088541549}
+  enemy: {fileID: 0}
+  tagName: 
 --- !u!114 &670425103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3027,6 +3028,7 @@ MonoBehaviour:
     - Grrrr...
     lineNum: 0
   cycle: {fileID: 1345475727}
+  gameController: {fileID: 0}
 --- !u!50 &1088541550
 Rigidbody2D:
   serializedVersion: 4
@@ -4404,6 +4406,7 @@ MonoBehaviour:
     - Who are you?
     lineNum: 2
   cycle: {fileID: 1345475727}
+  gameController: {fileID: 0}
 --- !u!114 &1512573540
 MonoBehaviour:
   m_ObjectHideFlags: 0
