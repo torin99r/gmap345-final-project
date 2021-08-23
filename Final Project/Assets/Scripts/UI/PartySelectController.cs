@@ -21,8 +21,8 @@ public class PartySelectController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hardCodedExample();
-        //partyMemberModels = PartyMemberManager.getInstance().partyMemberModels;
+        //hardCodedExample();
+        partyMemberModels = PartyMemberManager.getInstance().partyMemberModels;
         int spaceingCount = 0;
         for(int i = 0; i < partyMemberModels.Count; i++)
         { 
@@ -31,18 +31,18 @@ public class PartySelectController : MonoBehaviour
             memberClass.model = partyMemberModels[i];
             if (i == 0)
             {
-                member.transform.Translate(new Vector3(-200, (-100 * spaceingCount), 0));
+                member.transform.Translate(new Vector3(0, (-50 * spaceingCount), 0));
                 selectedPartyMembers.Add(member);
                 Text id = Instantiate(leaderID, member.transform);
-                id.transform.Translate(new Vector3(-190, 0, 0));
+                id.transform.Translate(new Vector3(-100, 0, 0));
                 memberClass.id = id;
             }
             else if (i%2 == 0)
             {
-                member.transform.Translate(new Vector3(-200, (-100 * spaceingCount), 0));
+                member.transform.Translate(new Vector3(0, (-50 * spaceingCount), 0));
             } else
             {
-                member.transform.Translate(new Vector3(200, (-100 * spaceingCount), 0));
+                member.transform.Translate(new Vector3(0, (-50 * spaceingCount), 0));
                 spaceingCount++;
             }
             partyMembers.Add(member);
