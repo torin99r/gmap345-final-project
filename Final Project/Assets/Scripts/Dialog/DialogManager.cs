@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum DialogState { Free, Dialog, Choices }
 public class DialogManager : MonoBehaviour
 {
     [SerializeField] GameObject dialogBox, choiceBox, dialogChoices, partySystem;
@@ -12,6 +13,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] Button[] choiceButton;
     [SerializeField] ChooseInput[] input;
     DialogChoices choices;
+    DialogState state;
     
 
     public event Action OnShowDialog;
@@ -120,10 +122,9 @@ public class DialogManager : MonoBehaviour
 
     public void AssignMember()
     {
+        PartyMemberModel member = new PartyMemberModel();
         if (dialog.HireChoice == "A")
         {
-            PartyMemberModel member = new PartyMemberModel();
-            Debug.Log("Hired A");
             member.setName(dialog.CharacterName);
             member.setProfileImage(GameObject.Find("Bard_Default").GetComponent<SpriteRenderer>().sprite);
             member.setInParty(true);
@@ -131,8 +132,6 @@ public class DialogManager : MonoBehaviour
         }
         else if (dialog.HireChoice == "B")
         {
-            PartyMemberModel member = new PartyMemberModel();
-            Debug.Log("Hired B");
             member.setName(dialog.CharacterName);
             member.setProfileImage(GameObject.Find("Bard_Default").GetComponent<SpriteRenderer>().sprite);
             member.setInParty(true);
@@ -140,8 +139,6 @@ public class DialogManager : MonoBehaviour
         }
         else if (dialog.HireChoice == "C")
         {
-            PartyMemberModel member = new PartyMemberModel();
-            Debug.Log("Hired C");
             member.setName(dialog.CharacterName);
             member.setProfileImage(GameObject.Find("Bard_Default").GetComponent<SpriteRenderer>().sprite);
             member.setInParty(true);
