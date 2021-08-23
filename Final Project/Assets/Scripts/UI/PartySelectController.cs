@@ -6,54 +6,45 @@ using UnityEngine.UI;
 public class PartySelectController : MonoBehaviour
 {
     public CanvasSelector canvasSelector;
-    public Button player;
+    //public Button player;
     public Button partyMember;
     public Text partyID;
     public Text leaderID;
+    int updateSpacing = 1;
+    int i = 1;
     // this will probably be something maintained through Scenes
     List<PartyMemberModel> partyMemberModels = new List<PartyMemberModel>();
     List<Button> partyMembers = new List<Button>();
     List<Button> selectedPartyMembers = new List<Button>();
 
     // delete this later
-    public Sprite sampleSprite;
+    //public Sprite sampleSprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        //hardCodedExample();
         partyMemberModels = PartyMemberManager.getInstance().partyMemberModels;
-        int spaceingCount = 0;
-        for(int i = 0; i < partyMemberModels.Count; i++)
-        { 
+        for (int i = 0; i < partyMemberModels.Count; i++)
+        {
             Button member = Instantiate(partyMember, gameObject.transform);
             PartyMemberButtonController memberClass = member.GetComponent<PartyMemberButtonController>();
             memberClass.model = partyMemberModels[i];
             if (i == 0)
             {
-                member.transform.Translate(new Vector3(0, (-50 * spaceingCount), 0));
+                member.transform.Translate(new Vector3(0, 0, 0));
                 selectedPartyMembers.Add(member);
                 Text id = Instantiate(leaderID, member.transform);
                 id.transform.Translate(new Vector3(-100, 0, 0));
                 memberClass.id = id;
             }
-            else if (i%2 == 0)
-            {
-                member.transform.Translate(new Vector3(0, (-50 * spaceingCount), 0));
-            } else
-            {
-                member.transform.Translate(new Vector3(0, (-50 * spaceingCount), 0));
-                spaceingCount++;
-            }
             partyMembers.Add(member);
-            
-            
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        print(partyMemberModels.Count);
         int partyMembersIndex = 0;
         foreach(Button member in partyMembers)
         {
@@ -121,15 +112,21 @@ public class PartySelectController : MonoBehaviour
         }
     }
 
-    void hardCodedExample()
+    public void handleUpdate()
     {
-        for (int i = 0; i < 9; i++)
+        Button member = Instantiate(partyMember, gameObject.transform);
+        PartyMemberButtonController memberClass = member.GetComponent<PartyMemberButtonController>();
+        memberClass.model = partyMemberModels[i];
+        if (i % 2 == 0)
         {
-            PartyMemberModel newMember = new PartyMemberModel();
-            newMember.setName("Character " + i);
-            newMember.setProfileImage(sampleSprite);
-
-            partyMemberModels.Add(newMember);
+            member.transform.Translate(new Vector3(0, (-60 * updateSpacing), 0));
         }
+        else
+        {
+            member.transform.Translate(new Vector3(0, (-60 * updateSpacing), 0));
+        }
+        updateSpacing++;
+        partyMembers.Add(member);
+        i++;
     }
 }

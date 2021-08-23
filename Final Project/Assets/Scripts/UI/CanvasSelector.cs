@@ -10,7 +10,7 @@ public class CanvasSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-        partySelectScreen.SetActive(true);
+        partySelectScreen.SetActive(false);
         statsScreen.SetActive(false);
         
     }

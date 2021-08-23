@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
-    [SerializeField] GameObject dialogBox, choiceBox, dialogChoices;
+    [SerializeField] GameObject dialogBox, choiceBox, dialogChoices, partySystem;
     [SerializeField] Text dialogText;
     [SerializeField] int lettersPerSecond;
     [SerializeField] Button[] choiceButton;
@@ -27,7 +27,6 @@ public class DialogManager : MonoBehaviour
     {
         Instance = this;
         choices = dialogChoices.GetComponent<DialogChoices>();
-
     }
 
     public bool IsShowing { get; private set; }
@@ -87,6 +86,8 @@ public class DialogManager : MonoBehaviour
                 OnCloseDialog?.Invoke();
                 dialog.Lines.Clear();
                 dialog.Lines.AddRange(choices.defaultLines());
+                AssignMember();
+                GameObject.Find(dialog.CharacterName).SetActive(false);
             }
         }
         GetPlayerChoice();
@@ -116,5 +117,36 @@ public class DialogManager : MonoBehaviour
             }
         }
     }
-    //TODO: Make a state enum --> If player is choosing their inputs (Choosing State) --> Dialog State
+
+    public void AssignMember()
+    {
+        if (dialog.HireChoice == "A")
+        {
+            PartyMemberModel member = new PartyMemberModel();
+            Debug.Log("Hired A");
+            member.setName(dialog.CharacterName);
+            member.setProfileImage(GameObject.Find("Bard_Default").GetComponent<SpriteRenderer>().sprite);
+            member.setInParty(true);
+            PartyMemberManager.getInstance().partyMemberModels.Add(member);
+        }
+        else if (dialog.HireChoice == "B")
+        {
+            PartyMemberModel member = new PartyMemberModel();
+            Debug.Log("Hired B");
+            member.setName(dialog.CharacterName);
+            member.setProfileImage(GameObject.Find("Bard_Default").GetComponent<SpriteRenderer>().sprite);
+            member.setInParty(true);
+            PartyMemberManager.getInstance().partyMemberModels.Add(member);
+        }
+        else if (dialog.HireChoice == "C")
+        {
+            PartyMemberModel member = new PartyMemberModel();
+            Debug.Log("Hired C");
+            member.setName(dialog.CharacterName);
+            member.setProfileImage(GameObject.Find("Bard_Default").GetComponent<SpriteRenderer>().sprite);
+            member.setInParty(true);
+            PartyMemberManager.getInstance().partyMemberModels.Add(member);
+        }
+        partySystem.GetComponent<PartySelectController>().handleUpdate();
+    }
 }
