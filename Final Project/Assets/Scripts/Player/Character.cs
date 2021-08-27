@@ -6,6 +6,8 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public float moveSpeed;
+    public int requiredStats;
+    public bool isHired = false;
     public bool IsMoving { get; private set; }
 
     private void Awake()

@@ -49,6 +49,7 @@ MonoBehaviour:
   isEnemyTurn: 0
   isAlive: 1
   numEnemy: 0
+  sprite: {fileID: 4687111328732486751}
 --- !u!1 &4687111328732486749
 GameObject:
   m_ObjectHideFlags: 0
