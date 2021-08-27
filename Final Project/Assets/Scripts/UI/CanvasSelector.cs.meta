@@ -1,11 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Final Project/Assets/Scripts/UI/PartyMemberButtonController.cs.meta
+guid: 966b188eafdab4f1ba0f7d584a062c82
+=======
 guid: 8c64ae60904c04576b0addc5238c8d77
+>>>>>>> origin/final_project_v0.2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:
