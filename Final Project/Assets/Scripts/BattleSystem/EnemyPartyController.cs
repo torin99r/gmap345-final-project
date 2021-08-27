@@ -37,9 +37,9 @@ public class EnemyPartyController : MonoBehaviour
             if (i > 0)
             {
                 GameObject curButton = Instantiate(attackButton, selectEnemy.transform);
-                curButton.transform.Translate(new Vector3(110f, 0.0f, 0.0f));
+                curButton.transform.Translate(new Vector3(365f, 0.0f, 0.0f));
                 GameObject curButtonMagic = Instantiate(attackButton, selectEnemyMagic.transform);
-                curButtonMagic.transform.Translate(new Vector3(110f, 0.0f, 0.0f));
+                curButtonMagic.transform.Translate(new Vector3(365f, 0.0f, 0.0f));
                 int enemyNum = i + 1;
                 curButton.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;
                 curButtonMagic.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;

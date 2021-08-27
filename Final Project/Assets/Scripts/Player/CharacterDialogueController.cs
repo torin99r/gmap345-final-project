@@ -7,6 +7,7 @@ public class CharacterDialogueController : MonoBehaviour, Interactables
     [SerializeField] Dialog dialog;
     [SerializeField] DayNightCycle cycle;
     [SerializeField] GameController gameController;
+    [SerializeField] DialogManager dialogManager;
     Character character;
     CharacterState state;
 
@@ -16,12 +17,15 @@ public class CharacterDialogueController : MonoBehaviour, Interactables
         character = GetComponent<Character>();
         cycle = GameObject.FindGameObjectWithTag("TimeCycleEvent").GetComponent<DayNightCycle>();
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        dialogManager = GameObject.Find("GameController").GetComponent<DialogManager>();
     }
     public void Interact(Transform init)
     {
         if(state == CharacterState.Idle)
         {
             state = CharacterState.Dialog;
+            dialogManager.characterName = gameObject.name;
+            dialogManager.characterTag = gameObject.tag;
             character.LookTowards(init.position);
             StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () => {
                 state = CharacterState.Idle;

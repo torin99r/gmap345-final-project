@@ -34,7 +34,7 @@ public class PartySelectController : MonoBehaviour
                 member.transform.Translate(new Vector3(0, 0, 0));
                 selectedPartyMembers.Add(member);
                 Text id = Instantiate(leaderID, member.transform);
-                id.transform.Translate(new Vector3(-100, 0, 0));
+                id.transform.Translate(new Vector3(-250, 0, 0));
                 memberClass.id = id;
             }
             partyMembers.Add(member);
@@ -70,11 +70,11 @@ public class PartySelectController : MonoBehaviour
         Text id = Instantiate(partyID, transform);
         if (index % 2 == 0)
         {
-            id.transform.Translate(new Vector3(-190, 0, 0));
+            id.transform.Translate(new Vector3(-250, 0, 0));
         }
         else
         {
-            id.transform.Translate(new Vector3(325, 0, 0));
+            id.transform.Translate(new Vector3(-250, 0, 0));
         }
         return id;
     }

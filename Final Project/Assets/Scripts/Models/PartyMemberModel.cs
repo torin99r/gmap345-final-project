@@ -14,6 +14,9 @@ public class PartyMemberModel
     int agl = 0;
     int spd = 0;
     Sprite profileImage;
+    int courage = 0;
+    int intellect = 0;
+    int compassion = 0;
 
     public PartyMemberModel()
     {
@@ -110,5 +113,33 @@ public class PartyMemberModel
         this.profileImage = profileImage;
     }
 
+    public int getCourage()
+    {
+        return courage;
+    }
 
+    public int getIntellect()
+    {
+        return intellect;
+    }
+
+    public int getCompassion()
+    {
+        return compassion;
+    }
+
+    public void setCourage(int courage)
+    {
+        this.courage = courage;
+    }
+
+    public void setIntellect(int intellect)
+    {
+        this.intellect = intellect;
+    }
+
+    public void setCompassion(int compassion)
+    {
+        this.compassion = compassion;
+    }
 }

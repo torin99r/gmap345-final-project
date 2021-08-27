@@ -7,30 +7,27 @@ using UnityEngine.Experimental.Rendering.Universal;
 public enum TimeEvent { Free, Event, EventOver }
 public class DayNightCycle : MonoBehaviour
 {
-    [SerializeField] Text timeText, dayText, timeOfDayText;
+    [SerializeField] Text dayText, timeOfDayText;
     [SerializeField] CharacterDialogueController character;
     public bool triggered = false;
-    public string minutes, timeOfDay;
-    public int hour, day;
+    public string curTimeOfDay, nextTimeOfDay;
+    public int day;
     public static bool gameIsPaused;
     public GameObject daytimePanel;
     
-    public Color dawnColor = new Color(0.85f, 0.85f, 0.85f);
     public Color dayColor = new Color(1.0f, 1.0f, 1.0f);
-    public Color noonColor = new Color(0.75f, 0.75f, 0.75f);
-    public Color eveningColor = new Color(0.50f, 0.50f, 0.50f);
     public Color nightColor = new Color(0.25f, 0.25f, 0.25f);
 
     public Light2D light2d;
     TimeEvent state;
+    string tempTimeOfDay;
 
     private void Start()
     {
         state = TimeEvent.Free;
         character = GameObject.FindGameObjectWithTag("ActivateEvent").GetComponent<CharacterDialogueController>();
-        timeText.text = $"{hour.ToString()}:{minutes.ToString()}";
         dayText.text = "Day " + day.ToString();
-        timeOfDayText.text = timeOfDay;
+        timeOfDayText.text = curTimeOfDay;
     }
 
 
@@ -48,15 +45,17 @@ public class DayNightCycle : MonoBehaviour
 
         if (triggered)
         {
+            tempTimeOfDay = curTimeOfDay;
+            curTimeOfDay = nextTimeOfDay;
             state = TimeEvent.Event;
             PlayerPrefs.SetInt("CurrentDay", day);
             daytimePanel.SetActive(true);
             gameIsPaused = true;
             CheckPauseState();
             triggered = false;
+            nextTimeOfDay = tempTimeOfDay;
         }
-
-        timeText.text = $"{hour.ToString()}:{minutes}";
+        timeOfDayText.text = curTimeOfDay;
     }
 
     void CheckPauseState()
@@ -85,41 +84,17 @@ public class DayNightCycle : MonoBehaviour
         triggered = false;
         character.gameObject.tag = "DeactivateEvent";
 
-        switch (timeOfDay.ToLower())
+        switch (curTimeOfDay.ToLower())
         {
             case "morning":
-                if (hour >= 5 && hour <= 11)
-                {
-                    light2d.color = dayColor;
-                }
-                else if (hour >= 1 && hour <= 4)
-                {
-                    light2d.color = dawnColor;
-                }
-                break;
-            case "noon":
-                if (hour >= 12 && hour <= 16)
-                {
-                    light2d.color = noonColor;
-                }
-                break;
-            case "evening":
-                if (hour >= 17 && hour <= 20)
-                {
-                    light2d.color = eveningColor;
-                }
+                light2d.color = dayColor;
                 break;
             case "night":
-                if (hour >= 21 && hour <= 24)
-                {
-                    light2d.color = nightColor;
-                }
+                light2d.color = nightColor;
                 break;
             default:
                 Debug.Log("Error in Switch Case");
                 break;
-
         }
- 
     }
 }

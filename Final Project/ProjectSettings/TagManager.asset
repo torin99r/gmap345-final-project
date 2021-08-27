@@ -3,7 +3,26 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PartyMember1
+  - Party
+  - Stats1
+  - HealthBar
+  - ManaBar
+  - EnemyParty
+  - SelectButtons
+  - BattleButtons
+  - ActivateEvent
+  - DeactivateEvent
+  - TimeCycleEvent
+  - A
+  - B
+  - C
+  - Enemy
+  - Courage
+  - Intellect
+  - Compassion
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -40,4 +59,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1618985531
+    locked: 0
+  - name: Foreground
+    uniqueID: 3652923799
+    locked: 0
+  - name: SolidObjects
+    uniqueID: 703418713
+    locked: 0
+  - name: Characters
+    uniqueID: 171130421
     locked: 0

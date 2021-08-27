@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
 
     public bool isAlive = true;
     public int numEnemy;
+    public SpriteRenderer sprite;
 
     bool isDead = false;
     PartyController partyController;
@@ -57,7 +58,7 @@ public class EnemyController : MonoBehaviour
 
     public void EnemyAttack()
     {
-        int memberToAttack = Random.Range(1, 2 + 1);
+        int memberToAttack = Random.Range(1, PartyMemberManager.getInstance().partyMemberModels.Count + 1);
         partyController.EnemyDamageParty(memberToAttack, 10);
     }
 }

@@ -11,9 +11,11 @@ public class DialogManager : MonoBehaviour
     [SerializeField] int lettersPerSecond;
     [SerializeField] Button[] choiceButton;
     [SerializeField] ChooseInput[] input;
+    public string characterName;
+    public string characterTag;
     DialogChoices choices;
+    GameObject character;
     
-
     public event Action OnShowDialog;
     public event Action OnCloseDialog;
 
@@ -26,7 +28,7 @@ public class DialogManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        choices = dialogChoices.GetComponent<DialogChoices>();
+        dialogChoices = null;
     }
 
     public bool IsShowing { get; private set; }
@@ -57,10 +59,19 @@ public class DialogManager : MonoBehaviour
 
     public void HandleUpdate()
     {
+        character = GameObject.Find(characterName);
+        if(characterName == "Bard")
+        {
+            choices = GameObject.Find("BardDialogChoices").GetComponent<DialogChoices>();
+        }
+        else if(characterName == "ChangeTimePriest")
+        {
+            choices = GameObject.Find("PriestDialogChoices").GetComponent<DialogChoices>();
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space) && !isTalking)
         {
             ++currentLine;
-
             if(currentLine == dialog.LineNum)
             {
                 choiceBox.SetActive(true);
@@ -71,6 +82,7 @@ public class DialogManager : MonoBehaviour
                     choiceButton[x].GetComponentInChildren<Text>().text = getChoices[x];
                     input[x] = choiceButton[x].GetComponent<ChooseInput>();
                 }
+                Time.timeScale = 0;
             }
 
             if(currentLine < dialog.Lines.Count)
@@ -84,15 +96,39 @@ public class DialogManager : MonoBehaviour
                 dialogBox.SetActive(false);
                 onDialogFinished?.Invoke();
                 OnCloseDialog?.Invoke();
-                dialog.Lines.Clear();
-                dialog.Lines.AddRange(choices.defaultLines());
-                AssignMember();
-                GameObject.Find(dialog.CharacterName).SetActive(false);
+                if(characterTag == "Enemy" || characterTag == "NPC")
+                {
+                    return;
+                }
+                else
+                {
+                    dialog.Lines.Clear();
+                    dialog.Lines.AddRange(choices.defaultLines());
+                }
+                if (character.GetComponent<Character>().isHired)
+                {
+                    GameObject.Find(characterName).SetActive(false);
+                }
             }
         }
-        GetPlayerChoice();
+        if(characterName == "ChangeTimePriest")
+        {
+            GetPlayerChoiceForUpgrade();
+        }
+        else if(characterTag == "Enemy")
+        {
+            return;
+        }
+        else if (characterTag == "NPC")
+        {
+            return;
+        }
+        else
+        {
+            GetPlayerChoice();
+        }
     }
-
+    //Check what the player chose
     public void GetPlayerChoice()
     {
         for (int x = 0; x < choices.getLines().Count; x++)
@@ -102,51 +138,108 @@ public class DialogManager : MonoBehaviour
                 input[x].clicked = false;
                 choiceBox.SetActive(false);
                 dialog.Lines.AddRange(choices.getA());
+                Time.timeScale = 1;
             }
             else if (input[x].clicked && input[x].tag == "B")
             {
                 input[x].clicked = false;
                 choiceBox.SetActive(false);
                 dialog.Lines.AddRange(choices.getB());
+                Time.timeScale = 1;
+            }
+            else if (input[x].clicked && input[x].tag == "C")
+            {
+                input[x].clicked = false;
+                choiceBox.SetActive(false);
+                switch (character.tag)
+                {
+                    case "Courage":
+                        if (PartyMemberManager.getInstance().partyMemberModels[0].getCourage() >= character.GetComponent<Character>().requiredStats)
+                        {
+                            dialog.Lines.AddRange(choices.RecruitLines());
+                            AssignMember(input[x].tag);
+                        }
+                        else
+                        {
+                            dialog.Lines.AddRange(choices.getC());
+                        }
+                        break;
+                    case "Intellect":
+                        if (PartyMemberManager.getInstance().partyMemberModels[0].getIntellect() >= character.GetComponent<Character>().requiredStats)
+                        {
+                            dialog.Lines.AddRange(choices.RecruitLines());
+                            AssignMember(input[x].tag);
+                        }
+                        else
+                        {
+                            dialog.Lines.AddRange(choices.getC());
+                        }
+                        break;
+                    case "Compassion":
+                        if (PartyMemberManager.getInstance().partyMemberModels[0].getCompassion() >= character.GetComponent<Character>().requiredStats)
+                        {
+                            dialog.Lines.AddRange(choices.RecruitLines());
+                            AssignMember(input[x].tag);
+                        }
+                        else
+                        {
+                            dialog.Lines.AddRange(choices.getC());
+                        }
+                        break;
+                }
+                Time.timeScale = 1;
+            }
+        }
+    }
+
+    //Character joins party
+    public void AssignMember(string tag)
+    {
+        PartyMemberModel member = new PartyMemberModel();
+        if (dialog.HireChoice == tag)
+        {
+            member.setName(dialog.CharacterName);
+            member.setProfileImage(GameObject.Find(characterName + "_Default").GetComponent<SpriteRenderer>().sprite);
+            member.setInParty(true);
+            PartyMemberManager.getInstance().partyMemberModels.Add(member);
+        }
+        else
+        {
+            return;
+        }
+        partySystem.GetComponent<PartySelectController>().handleUpdate();
+        character.GetComponent<Character>().isHired = true;
+    }
+
+    //Stat upgrade
+    public void GetPlayerChoiceForUpgrade()
+    {
+        for (int x = 0; x < choices.getLines().Count; x++)
+        {
+            if (input[x].clicked && input[x].tag == "A")
+            {
+                input[x].clicked = false;
+                choiceBox.SetActive(false);
+                dialog.Lines.AddRange(choices.getA());
+                Time.timeScale = 1;
+                PartyMemberManager.getInstance().partyMemberModels[0].setCourage(PartyMemberManager.getInstance().partyMemberModels[0].getCourage() + 1);
+            }
+            else if (input[x].clicked && input[x].tag == "B")
+            {
+                input[x].clicked = false;
+                choiceBox.SetActive(false);
+                dialog.Lines.AddRange(choices.getB());
+                Time.timeScale = 1;
+                PartyMemberManager.getInstance().partyMemberModels[0].setIntellect(PartyMemberManager.getInstance().partyMemberModels[0].getIntellect() + 1);
             }
             else if (input[x].clicked && input[x].tag == "C")
             {
                 input[x].clicked = false;
                 choiceBox.SetActive(false);
                 dialog.Lines.AddRange(choices.getC());
+                Time.timeScale = 1;
+                PartyMemberManager.getInstance().partyMemberModels[0].setCompassion(PartyMemberManager.getInstance().partyMemberModels[0].getCompassion() + 1);
             }
         }
-    }
-
-    public void AssignMember()
-    {
-        if (dialog.HireChoice == "A")
-        {
-            PartyMemberModel member = new PartyMemberModel();
-            Debug.Log("Hired A");
-            member.setName(dialog.CharacterName);
-            member.setProfileImage(GameObject.Find("Bard_Default").GetComponent<SpriteRenderer>().sprite);
-            member.setInParty(true);
-            PartyMemberManager.getInstance().partyMemberModels.Add(member);
-        }
-        else if (dialog.HireChoice == "B")
-        {
-            PartyMemberModel member = new PartyMemberModel();
-            Debug.Log("Hired B");
-            member.setName(dialog.CharacterName);
-            member.setProfileImage(GameObject.Find("Bard_Default").GetComponent<SpriteRenderer>().sprite);
-            member.setInParty(true);
-            PartyMemberManager.getInstance().partyMemberModels.Add(member);
-        }
-        else if (dialog.HireChoice == "C")
-        {
-            PartyMemberModel member = new PartyMemberModel();
-            Debug.Log("Hired C");
-            member.setName(dialog.CharacterName);
-            member.setProfileImage(GameObject.Find("Bard_Default").GetComponent<SpriteRenderer>().sprite);
-            member.setInParty(true);
-            PartyMemberManager.getInstance().partyMemberModels.Add(member);
-        }
-        partySystem.GetComponent<PartySelectController>().handleUpdate();
     }
 }

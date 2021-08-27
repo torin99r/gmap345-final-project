@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     [SerializeField] PartyController partyController;
     [SerializeField] GameObject battleSystem, partySystem;
     [SerializeField] Camera mainCamera;
-    [SerializeField] GameObject enemy;
     public string tagName;
     GameState state;
     int clicked = 0;
@@ -51,6 +50,9 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(PartyMemberManager.getInstance().partyMemberModels[0].getCourage());
+        //Debug.Log(PartyMemberManager.getInstance().partyMemberModels[0].getCompassion());
+        //Debug.Log(PartyMemberManager.getInstance().partyMemberModels[0].getIntellect());
         if (state == GameState.Free)
         {
             playerController.HandleUpdate();
@@ -75,8 +77,6 @@ public class GameController : MonoBehaviour
                 mainCamera.gameObject.SetActive(true);
                 state = GameState.Free;
                 partyController.battleOver = false;
-                enemy = GameObject.Find(tagName).gameObject;
-                enemy.SetActive(false);
             }
         }
         else if(state == GameState.Party)

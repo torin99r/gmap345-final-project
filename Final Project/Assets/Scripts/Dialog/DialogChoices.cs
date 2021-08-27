@@ -10,6 +10,7 @@ public class DialogChoices : MonoBehaviour
     [SerializeField] Dialog dialogB;
     [SerializeField] Dialog dialogC;
     [SerializeField] Dialog dLines;
+    [SerializeField] Dialog recruitChoices;
 
     public List<string> getLines()
     {
@@ -34,5 +35,10 @@ public class DialogChoices : MonoBehaviour
     public List<string> defaultLines()
     {
         return dLines.Lines;
+    }
+
+    public List<string> RecruitLines()
+    {
+        return recruitChoices.Lines;
     }
 }
