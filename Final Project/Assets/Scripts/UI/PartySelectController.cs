@@ -62,7 +62,7 @@ public class PartySelectController : MonoBehaviour
             }
             partyMembersIndex++;
         }
-        
+
     }
 
     Text instantiatePartyIndicator(Transform transform, int index)

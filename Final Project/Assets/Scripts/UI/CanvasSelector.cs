@@ -9,16 +9,16 @@ public class CanvasSelector : MonoBehaviour
     public GameObject statsScreen;
     // Start is called before the first frame update
     void Start()
-    { 
+    {
         partySelectScreen.SetActive(false);
         statsScreen.SetActive(false);
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void goToPartySelect() {
@@ -36,7 +36,7 @@ public class CanvasSelector : MonoBehaviour
         {
             if (child.name == "Name")
             {
-                
+
                 child.GetComponent<Text>().text = member.getName();
             }
             else if (child.name == "HP")
