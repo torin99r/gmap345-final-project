@@ -30,10 +30,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Characters
+  - SolidObjects
+  - Triggerables
+  - BattleSystem
   - 
   - 
   - 
@@ -71,4 +71,7 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 171130421
+    locked: 0
+  - name: Fill
+    uniqueID: 2970333421
     locked: 0

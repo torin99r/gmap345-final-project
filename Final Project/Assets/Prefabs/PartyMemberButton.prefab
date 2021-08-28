@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5289237044175688043}
   - component: {fileID: 5289237044175688040}
   - component: {fileID: 5289237044175688041}
-  - component: {fileID: 1979469459026551863}
+  - component: {fileID: 3012909169961588129}
   m_Layer: 5
   m_Name: PartyMemberButton
   m_TagString: Untagged
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1979469459026551863
+--- !u!114 &3012909169961588129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,11 +209,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5289237044175687959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966b188eafdab4f1ba0f7d584a062c82, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c64ae60904c04576b0addc5238c8d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  id: {fileID: 0}
+  id: {fileID: 970607511422250006, guid: ae9c0b69226e2cc41a965d7b42604f2e, type: 3}
   name: {fileID: 2196047519895184425}
   hp: {fileID: 2609273153741769791}
   mana: {fileID: 1880159978416711507}
