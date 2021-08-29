@@ -26,7 +26,6 @@ public class DayNightCycle : MonoBehaviour
     {
         state = TimeEvent.Free;
         character = GameObject.FindGameObjectWithTag("ActivateEvent").GetComponent<CharacterDialogueController>();
-        dayText.text = "Day " + day.ToString();
         timeOfDayText.text = curTimeOfDay;
     }
 
@@ -56,6 +55,7 @@ public class DayNightCycle : MonoBehaviour
             nextTimeOfDay = tempTimeOfDay;
         }
         timeOfDayText.text = curTimeOfDay;
+        dayText.text = "Day " + day.ToString();
     }
 
     void CheckPauseState()

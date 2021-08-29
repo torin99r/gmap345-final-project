@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class SpawnPriest : MonoBehaviour
 {
-    [SerializeField] GameObject priest;
+    [SerializeField] GameObject priest, princess;
     [SerializeField] DayNightCycle cycle;
+    [SerializeField] GameObject door;
+    [SerializeField] GameObject dayAudio, nightAudio;
 
     private void Start()
     {
@@ -18,10 +20,18 @@ public class SpawnPriest : MonoBehaviour
         {
             priest.SetActive(true);
             priest.tag = "ActivateEvent";
+            door.SetActive(false);
+            dayAudio.SetActive(true);
+            nightAudio.SetActive(false);
+            princess.SetActive(false);
         }
         else if(cycle.curTimeOfDay == "Night")
         {
             priest.SetActive(false);
+            door.SetActive(true);
+            nightAudio.SetActive(true);
+            dayAudio.SetActive(false);
+            princess.SetActive(true);
         }
     }
 }

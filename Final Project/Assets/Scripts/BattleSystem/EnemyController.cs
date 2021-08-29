@@ -59,6 +59,7 @@ public class EnemyController : MonoBehaviour
     public void EnemyAttack()
     {
         int memberToAttack = Random.Range(1, PartyMemberManager.getInstance().partyMemberModels.Count + 1);
-        partyController.EnemyDamageParty(memberToAttack, 10);
+        int damage = Random.Range(8, 12 + 1);
+        partyController.EnemyDamageParty(memberToAttack, damage);
     }
 }

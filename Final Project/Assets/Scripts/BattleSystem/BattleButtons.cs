@@ -7,8 +7,8 @@ public class BattleButtons : MonoBehaviour
     public GameObject DefaultButtons;
     public GameObject SelectAttack;
     public GameObject SelectMagic;
+    public GameObject battleScene;
     public PartyController partyController;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +45,14 @@ public class BattleButtons : MonoBehaviour
         SelectAttack.SetActive(false);
         SelectMagic.SetActive(false);
         DefaultButtons.SetActive(true);
-        partyController.PartyDamageEnemy(enemyNum, 15);
+        //partyController.SelectPartyMemberTurn(enemyNum);
+        //partyController.PartyDamageEnemy(enemyNum, 15);
+    }
+
+    public void FleeBattle()
+    {
+        //stop the battle scene
+        partyController.battleOver = true;
+
     }
 }

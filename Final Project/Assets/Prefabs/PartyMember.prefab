@@ -129,3 +129,5 @@ MonoBehaviour:
   memberMaxHealth: 100
   memberMaxMana: 100
   memberCurrentHealth: 100
+  memberCurrentMana: 100
+  isAlive: 1

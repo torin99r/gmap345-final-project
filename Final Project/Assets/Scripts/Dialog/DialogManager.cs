@@ -68,7 +68,19 @@ public class DialogManager : MonoBehaviour
         {
             choices = GameObject.Find("PriestDialogChoices").GetComponent<DialogChoices>();
         }
-        
+        else if (characterName == "Clown")
+        {
+            choices = GameObject.Find("ClownDialogChoices").GetComponent<DialogChoices>();
+        }
+        else if (characterName == "Princess")
+        {
+            choices = GameObject.Find("PrincessDialogChoices").GetComponent<DialogChoices>();
+        }
+        else if (characterName == "KingEnemy")
+        {
+            choices = GameObject.Find("KingDialogChoices").GetComponent<DialogChoices>();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && !isTalking)
         {
             ++currentLine;
@@ -81,6 +93,32 @@ public class DialogManager : MonoBehaviour
                 {
                     choiceButton[x].GetComponentInChildren<Text>().text = getChoices[x];
                     input[x] = choiceButton[x].GetComponent<ChooseInput>();
+                }
+                var statDialog = choices.AchievedStat();
+                var requiredStat = character.GetComponent<Character>().requiredStats;
+                switch (character.tag)
+                {
+                    case "Courage":
+                        if (PartyMemberManager.getInstance().partyMemberModels[0].getCourage() >= requiredStat)
+                        {
+                            choiceButton[2].GetComponentInChildren<Text>().text = statDialog[0];
+                            input[2] = choiceButton[2].GetComponent<ChooseInput>();
+                        }
+                        break;
+                    case "Intellect":
+                        if (PartyMemberManager.getInstance().partyMemberModels[0].getIntellect() >= requiredStat)
+                        {
+                            choiceButton[2].GetComponentInChildren<Text>().text = statDialog[0];
+                            input[2] = choiceButton[2].GetComponent<ChooseInput>();
+                        }
+                        break;
+                    case "Compassion":
+                        if (PartyMemberManager.getInstance().partyMemberModels[0].getCompassion() >= requiredStat)
+                        {
+                            choiceButton[2].GetComponentInChildren<Text>().text = statDialog[0];
+                            input[2] = choiceButton[2].GetComponent<ChooseInput>();
+                        }
+                        break;
                 }
                 Time.timeScale = 0;
             }
@@ -178,6 +216,7 @@ public class DialogManager : MonoBehaviour
                     case "Compassion":
                         if (PartyMemberManager.getInstance().partyMemberModels[0].getCompassion() >= character.GetComponent<Character>().requiredStats)
                         {
+
                             dialog.Lines.AddRange(choices.RecruitLines());
                             AssignMember(input[x].tag);
                         }
