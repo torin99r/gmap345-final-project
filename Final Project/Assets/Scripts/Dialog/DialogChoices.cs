@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DialogChoices : MonoBehaviour
 {
     [SerializeField] Dialog choices;
+    [SerializeField] public List<string> statAchieved;
     [SerializeField] Dialog dialogA;
     [SerializeField] Dialog dialogB;
     [SerializeField] Dialog dialogC;
@@ -40,5 +41,10 @@ public class DialogChoices : MonoBehaviour
     public List<string> RecruitLines()
     {
         return recruitChoices.Lines;
+    }
+
+    public List<string> AchievedStat()
+    {
+        return statAchieved;
     }
 }

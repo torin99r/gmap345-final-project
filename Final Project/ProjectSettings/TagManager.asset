@@ -23,6 +23,7 @@ TagManager:
   - Intellect
   - Compassion
   - NPC
+  - PlayerDamage
   layers:
   - Default
   - TransparentFX

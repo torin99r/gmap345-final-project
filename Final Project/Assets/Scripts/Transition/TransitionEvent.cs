@@ -8,7 +8,7 @@ public class TransitionEvent : MonoBehaviour
     [SerializeField] GameObject optionPanel;
     public void startGame()
     {
-        SceneManager.LoadScene("Game 1");
+        SceneManager.LoadScene("Main Game");
     }
 
     public void openOptions()

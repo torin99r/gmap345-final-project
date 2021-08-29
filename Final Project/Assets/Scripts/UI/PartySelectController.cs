@@ -44,7 +44,6 @@ public class PartySelectController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(partyMemberModels.Count);
         int partyMembersIndex = 0;
         foreach(Button member in partyMembers)
         {

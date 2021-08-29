@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameState { Free, Dialog, Battle, Party }
+public enum GameState { Free, Dialog, Battle, Party, Option }
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
@@ -50,9 +50,6 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(PartyMemberManager.getInstance().partyMemberModels[0].getCourage());
-        //Debug.Log(PartyMemberManager.getInstance().partyMemberModels[0].getCompassion());
-        //Debug.Log(PartyMemberManager.getInstance().partyMemberModels[0].getIntellect());
         if (state == GameState.Free)
         {
             playerController.HandleUpdate();
