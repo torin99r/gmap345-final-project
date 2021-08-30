@@ -13,6 +13,9 @@ public class EnemyPartyController : MonoBehaviour
     public GameObject selectEnemyMagic;
     public GameObject attackButton;
 
+    public bool isKing = false;
+    public Sprite kingSprite;
+
     public GameObject damageTextObj1;
     public GameObject damageTextObj2;
 
@@ -47,9 +50,9 @@ public class EnemyPartyController : MonoBehaviour
             if (i > 0)
             {
                 GameObject curButton = Instantiate(attackButton, selectEnemy.transform);
-                curButton.transform.Translate(new Vector3(200f, 0.0f, 0.0f));
+                curButton.transform.Translate(new Vector3(204f, 0.0f, 0.0f));
                 GameObject curButtonMagic = Instantiate(attackButton, selectEnemyMagic.transform);
-                curButtonMagic.transform.Translate(new Vector3(200f, 0.0f, 0.0f));
+                curButtonMagic.transform.Translate(new Vector3(204f, 0.0f, 0.0f));
                 int enemyNum = i + 1;
                 curButton.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;
                 curButtonMagic.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;
@@ -73,6 +76,12 @@ public class EnemyPartyController : MonoBehaviour
                 damageTextObj1.SetActive(false);
                 damageTextObj2.SetActive(false);
             }
+        }
+
+        if (isKing)
+        {
+            SetKing();
+            isKing = false;
         }
     }
 
@@ -152,9 +161,9 @@ public class EnemyPartyController : MonoBehaviour
             if (i > 0)
             {
                 GameObject curButton = Instantiate(attackButton, selectEnemy.transform);
-                curButton.transform.Translate(new Vector3(200f, 0.0f, 0.0f));
+                curButton.transform.Translate(new Vector3(204f, 0.0f, 0.0f));
                 GameObject curButtonMagic = Instantiate(attackButton, selectEnemyMagic.transform);
-                curButtonMagic.transform.Translate(new Vector3(200f, 0.0f, 0.0f));
+                curButtonMagic.transform.Translate(new Vector3(204f, 0.0f, 0.0f));
                 int enemyNum = i + 1;
                 curButton.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;
                 curButtonMagic.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;
@@ -163,5 +172,33 @@ public class EnemyPartyController : MonoBehaviour
             }
         }
         enemiesAlive = numEnemies;
+    }
+
+    void SetKing()
+    {
+        if (allEnemies.Count > 1)
+        {
+            Destroy(selectEnemy.transform.GetChild(2).gameObject);
+            Destroy(selectEnemyMagic.transform.GetChild(2).gameObject);
+        }
+
+        foreach (var enemy in allEnemies)
+        {
+            Destroy(enemy);
+        }
+
+        allEnemies.Clear();
+
+        GameObject king = Instantiate(enemy, gameObject.transform);
+        king.GetComponent<EnemyController>().partyController = partyController;
+        king.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = kingSprite;
+        king.transform.Translate(new Vector3(0.0f, 1.5f, 0.0f));
+        king.GetComponent<EnemyController>().numEnemy = 0;
+        king.GetComponent<EnemyController>().enemyMaxHealth = 150;
+        king.GetComponent<EnemyController>().enemyCurrentHealth = 150;
+        king.GetComponent<EnemyController>().isKing = true;
+        allEnemies.Add(king);
+        numEnemies = 1;
+        enemiesAlive = 1;
     }
 }

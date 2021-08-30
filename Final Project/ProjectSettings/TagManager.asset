@@ -24,6 +24,9 @@ TagManager:
   - Compassion
   - NPC
   - PlayerDamage
+  - Stats2
+  - Stats3
+  - King
   layers:
   - Default
   - TransparentFX

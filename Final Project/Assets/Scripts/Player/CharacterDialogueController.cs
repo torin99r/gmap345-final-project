@@ -33,6 +33,10 @@ public class CharacterDialogueController : MonoBehaviour, Interactables
                 {
                     gameController.tagName = gameObject.name;
                 }
+                else if (gameObject.tag == "King")
+                {
+                    gameController.tagName = gameObject.name;
+                }
                 else if(gameObject.tag == "ActivateEvent")
                 {
                     gameController.tagName = "Event";

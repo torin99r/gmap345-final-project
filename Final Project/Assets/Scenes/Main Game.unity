@@ -275,8 +275,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 351b4cbab5939a44aac01a42754e41a1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -415,8 +415,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 351b4cbab5939a44aac01a42754e41a1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1135,8 +1135,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 351b4cbab5939a44aac01a42754e41a1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1449,7 +1449,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player Name
+  m_Text: Bob
 --- !u!222 &294892774
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28461,6 +28461,7 @@ MonoBehaviour:
   battleSystem: {fileID: 770713283}
   partySystem: {fileID: 1590909028}
   mainCamera: {fileID: 1701193986}
+  enemyPartyController: {fileID: 1740903917}
   tagName: 
 --- !u!114 &670425103
 MonoBehaviour:
@@ -33560,8 +33561,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 351b4cbab5939a44aac01a42754e41a1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -33599,7 +33600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1311232753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34959,8 +34960,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 351b4cbab5939a44aac01a42754e41a1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -36123,8 +36124,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 351b4cbab5939a44aac01a42754e41a1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -113247,6 +113248,8 @@ MonoBehaviour:
   selectEnemy: {fileID: 434239291}
   selectEnemyMagic: {fileID: 8640717}
   attackButton: {fileID: 109346832}
+  isKing: 0
+  kingSprite: {fileID: 1621781197010240220, guid: 2d62b080474bbd24ab21b0c2a8da2d8a, type: 3}
   damageTextObj1: {fileID: 1048670401}
   damageTextObj2: {fileID: 1598181037}
   defaultTurnTime: 2
@@ -118909,7 +118912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1853792165
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -123170,6 +123173,7 @@ MonoBehaviour:
   SelectMagic: {fileID: 8640717}
   battleScene: {fileID: 770713283}
   partyController: {fileID: 1206538288}
+  enemyPartyController: {fileID: 1740903917}
 --- !u!1 &2013580897
 GameObject:
   m_ObjectHideFlags: 0
@@ -123959,8 +123963,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 351b4cbab5939a44aac01a42754e41a1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -123994,7 +123998,7 @@ GameObject:
   - component: {fileID: 2119250165}
   m_Layer: 6
   m_Name: KingEnemy
-  m_TagString: Enemy
+  m_TagString: King
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124034,13 +124038,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkDownSprites:
-  - {fileID: -1724822148711148119, guid: 48c6e9abd48925b418955d20ca6d87d0, type: 3}
+  - {fileID: -1724822148711148119, guid: 2d62b080474bbd24ab21b0c2a8da2d8a, type: 3}
   walkUpSprites:
-  - {fileID: -1724822148711148119, guid: 48c6e9abd48925b418955d20ca6d87d0, type: 3}
+  - {fileID: -1724822148711148119, guid: 2d62b080474bbd24ab21b0c2a8da2d8a, type: 3}
   walkRightSprites:
-  - {fileID: -1724822148711148119, guid: 48c6e9abd48925b418955d20ca6d87d0, type: 3}
+  - {fileID: -1724822148711148119, guid: 2d62b080474bbd24ab21b0c2a8da2d8a, type: 3}
   walkLeftSprites:
-  - {fileID: -1724822148711148119, guid: 48c6e9abd48925b418955d20ca6d87d0, type: 3}
+  - {fileID: -1724822148711148119, guid: 2d62b080474bbd24ab21b0c2a8da2d8a, type: 3}
   defaultDirection: 1
 --- !u!114 &2119250167
 MonoBehaviour:
@@ -124144,7 +124148,7 @@ SpriteRenderer:
   m_SortingLayerID: 171130421
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1724822148711148119, guid: 48c6e9abd48925b418955d20ca6d87d0, type: 3}
+  m_Sprite: {fileID: -1724822148711148119, guid: 2d62b080474bbd24ab21b0c2a8da2d8a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -13,8 +13,10 @@ public class EnemyController : MonoBehaviour
     public int numEnemy;
     public SpriteRenderer sprite;
 
+    public bool isKing = false;
+
     bool isDead = false;
-    PartyController partyController;
+    public PartyController partyController;
     EnemyPartyController enemyPartyController;
 
     // Start is called before the first frame update
@@ -60,6 +62,10 @@ public class EnemyController : MonoBehaviour
     {
         int memberToAttack = Random.Range(1, PartyMemberManager.getInstance().partyMemberModels.Count + 1);
         int damage = Random.Range(8, 12 + 1);
+        if (isKing)
+        {
+            damage = Random.Range(12, 16 + 1);
+        }
         partyController.EnemyDamageParty(memberToAttack, damage);
     }
 }

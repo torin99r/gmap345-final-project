@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameState { Free, Dialog, Battle, Party, Option }
+public enum GameState { Free, Dialog, Battle, Party, Option, FinalBattle }
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
     [SerializeField] PartyController partyController;
     [SerializeField] GameObject battleSystem, partySystem;
     [SerializeField] Camera mainCamera;
+    [SerializeField] EnemyPartyController enemyPartyController;
     public string tagName;
     GameState state;
     int clicked = 0;
@@ -34,8 +35,15 @@ public class GameController : MonoBehaviour
         {
             if(state == GameState.Dialog)
             {
-                if (tagName.Contains("Enemy"))
+                if (tagName.Contains("King"))
                 {
+                    enemyPartyController.isKing = true;
+                    //partyController.StartBattle();
+                    state = GameState.FinalBattle;
+                }
+                else if (tagName.Contains("Enemy"))
+                {
+                    //partyController.StartBattle();
                     state = GameState.Battle;
                 }
                 else
@@ -85,6 +93,14 @@ public class GameController : MonoBehaviour
                 state = GameState.Free;
             }
         }
-        
+        else if (state == GameState.FinalBattle)
+        {
+            battleSystem.SetActive(true);
+            mainCamera.gameObject.SetActive(false);
+            if (partyController.battleOver)
+            {
+                SceneManager.LoadScene("Win Game");
+            }
+        }
     }
 }

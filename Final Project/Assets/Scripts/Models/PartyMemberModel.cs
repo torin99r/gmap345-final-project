@@ -9,10 +9,10 @@ public class PartyMemberModel
     bool inParty = false;
     int hp = 100;
     int mana = 100;
-    int atk = 0;
-    int def = 0;
-    int agl = 0;
-    int spd = 0;
+    int atk = 15;
+    int def = 10;
+    int agl = 5;
+    int spd = 5;
     Sprite profileImage;
     int courage = 0;
     int intellect = 0;

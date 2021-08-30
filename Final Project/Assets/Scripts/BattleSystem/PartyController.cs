@@ -87,11 +87,13 @@ public class PartyController : MonoBehaviour
             GameObject member = partyMembers[0];
             PartyMemberManager.getInstance().partyMemberModels[0].setHP(member.GetComponentInChildren<PlayerBattleController>().playerCurrentHealth);
             PartyMemberManager.getInstance().partyMemberModels[0].setMana(member.GetComponentInChildren<PlayerBattleController>().playerCurrentMana);
+            //member.GetComponentInChildren<PlayerBattleController>().playerCurrentHealth = 100;
 
             if (PartyMemberManager.getInstance().partyMemberModels.Count > 1)
             {
                 PartyMemberManager.getInstance().partyMemberModels[1].setHP(member.GetComponentInChildren<PartyMemberOne>().memberCurrentHealth);
                 PartyMemberManager.getInstance().partyMemberModels[1].setMana(member.GetComponentInChildren<PartyMemberOne>().memberCurrentMana);
+                //member.GetComponentInChildren<PartyMemberOne>().memberCurrentHealth = 100;
             }
 
             var lowercase = cycle.curTimeOfDay.ToLower();
@@ -240,5 +242,29 @@ public class PartyController : MonoBehaviour
             }
         }
         
+    }
+
+    public void StartBattle()
+    {
+        cycle = GameObject.FindGameObjectWithTag("TimeCycleEvent").GetComponent<DayNightCycle>();
+        if (PartyMemberManager.getInstance().partyMemberModels.Count > 1)
+        {
+            for (int x = 0; x < PartyMemberManager.getInstance().partyMemberModels.Count; x++)
+            {
+                partyMembers.Add(partyMember);
+                partyMemberStats.Add(memberStats);
+            }
+            for (int i = 1; i < PartyMemberManager.getInstance().partyMemberModels.Count; i++)
+            {
+                GameObject member = Instantiate(partyMembers[i], gameObject.transform);
+                member.transform.Translate(new Vector3(-0.5f * i, 1.5f * i, 0.0f));
+                //member.GetComponent<PartyMemberOne>().memberCurrentHealth = 100;
+                GameObject curStats = Instantiate(partyMemberStats[i], playerStats.transform);
+                curStats.tag = "Stats" + i.ToString();
+            }
+        }
+
+        movesLeft = PartyMemberManager.getInstance().partyMemberModels.Count;
+        partyMembersAlive = PartyMemberManager.getInstance().partyMemberModels.Count;
     }
 }

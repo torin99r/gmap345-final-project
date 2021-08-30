@@ -9,6 +9,7 @@ public class BattleButtons : MonoBehaviour
     public GameObject SelectMagic;
     public GameObject battleScene;
     public PartyController partyController;
+    public EnemyPartyController enemyPartyController;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +53,7 @@ public class BattleButtons : MonoBehaviour
     public void FleeBattle()
     {
         //stop the battle scene
-        partyController.battleOver = true;
-
+        //partyController.battleOver = true;
+        enemyPartyController.enemiesAlive = 0;
     }
 }
