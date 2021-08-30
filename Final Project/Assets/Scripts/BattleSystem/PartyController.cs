@@ -65,10 +65,10 @@ public class PartyController : MonoBehaviour
                 GameObject curStats = Instantiate(partyMemberStats[i], playerStats.transform);
                 curStats.tag = "Stats" + i.ToString();
             }
-
-            movesLeft = PartyMemberManager.getInstance().partyMemberModels.Count;
-            partyMembersAlive = PartyMemberManager.getInstance().partyMemberModels.Count;
         }
+
+        movesLeft = PartyMemberManager.getInstance().partyMemberModels.Count;
+        partyMembersAlive = PartyMemberManager.getInstance().partyMemberModels.Count;
     }
 
     // Update is called once per frame

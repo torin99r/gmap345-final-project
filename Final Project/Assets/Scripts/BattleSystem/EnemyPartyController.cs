@@ -47,9 +47,9 @@ public class EnemyPartyController : MonoBehaviour
             if (i > 0)
             {
                 GameObject curButton = Instantiate(attackButton, selectEnemy.transform);
-                curButton.transform.Translate(new Vector3(365f, 0.0f, 0.0f));
+                curButton.transform.Translate(new Vector3(200f, 0.0f, 0.0f));
                 GameObject curButtonMagic = Instantiate(attackButton, selectEnemyMagic.transform);
-                curButtonMagic.transform.Translate(new Vector3(365f, 0.0f, 0.0f));
+                curButtonMagic.transform.Translate(new Vector3(200f, 0.0f, 0.0f));
                 int enemyNum = i + 1;
                 curButton.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;
                 curButtonMagic.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;
@@ -120,10 +120,21 @@ public class EnemyPartyController : MonoBehaviour
 
     public void ResetEnemies()
     {
+        if (allEnemies.Count > 1)
+        {
+            Destroy(selectEnemy.transform.GetChild(2).gameObject);
+            Destroy(selectEnemyMagic.transform.GetChild(2).gameObject);
+        }
+
+        selectEnemy.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = true;
+        selectEnemyMagic.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = true;
+
         foreach (var enemy in allEnemies)
         {
             Destroy(enemy);
         }
+
+        allEnemies.Clear();
 
         numEnemies = Random.Range(minEnemies, maxEnemies + 1);
 
@@ -141,9 +152,9 @@ public class EnemyPartyController : MonoBehaviour
             if (i > 0)
             {
                 GameObject curButton = Instantiate(attackButton, selectEnemy.transform);
-                curButton.transform.Translate(new Vector3(110f, 0.0f, 0.0f));
+                curButton.transform.Translate(new Vector3(200f, 0.0f, 0.0f));
                 GameObject curButtonMagic = Instantiate(attackButton, selectEnemyMagic.transform);
-                curButtonMagic.transform.Translate(new Vector3(110f, 0.0f, 0.0f));
+                curButtonMagic.transform.Translate(new Vector3(200f, 0.0f, 0.0f));
                 int enemyNum = i + 1;
                 curButton.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;
                 curButtonMagic.GetComponent<AttackEnemyButton>().enemyNum = enemyNum;
